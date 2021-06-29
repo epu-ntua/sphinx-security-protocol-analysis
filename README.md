@@ -1,10 +1,13 @@
 Security Protocol Analysis Tool
 =============================
-Prerequisites: Docker
-Installation: docker-compose up
-SPA Interface: http://localhost:3001
+- Prerequisites: Docker  
 
-Or add the following service into your docker-compose file (in case you need integration with other services):
+- Installation: docker-compose up  
+
+- SPA Interface: http://localhost:3001  
+
+
+Alternatively add the following service into your docker-compose file (in case you need integration with other services):
 
     spa:
         restart: always 
