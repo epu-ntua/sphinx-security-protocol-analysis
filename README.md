@@ -1,41 +1,28 @@
-The Tamarin prover repository
+Security Protocol Analysis Tool
 =============================
-[![master branch build-status](https://travis-ci.org/tamarin-prover/tamarin-prover.svg?branch=develop)](https://travis-ci.org/tamarin-prover/tamarin-prover)
+Prerequisites: Docker
+Installation: docker-compose up
+SPA Interface: http://localhost:3001
 
-This README describes the organization of the repository of the Tamarin prover
-for security protocol verification. Its intended audience are interested
-users and future developers of the Tamarin prover. For installation
-and usage instructions of the Tamarin prover see chapter 2 of the manual:
-https://tamarin-prover.github.io/manual/book/002_installation.html
+Or add the following service into your docker-compose file (in case you need integration with other services):
 
-
-Developing and contributing
----------------------------
-
-See [contributing instructions](CONTRIBUTING.md) for instructions on how to develop,
-test and release changes to the Tamarin prover source code.
-
-
-Version Numbering Policy
------------------------
-
-We use version numbers with four components.
-
- - The first component is the major version number. It indicates complete
-   rewrites of the codebase.
- - The second component is the minor version number. We use odd minor version
-   numbers to denote development releases intended for early adopters. We use
-   even minor version numbers to denote public releases, which are also
-   published.
- - The third component indicates bugfix releases.
- - The fourth component indicates documentation and meta-data changes.
-
-We ensure that the external interface of a version of the Tamarin prover is backwards
-compatible with the external interface of all versions that agree on the major
-and minor version number.
-
-We announce all releases of the Tamarin prover on:
-http://tamarin-prover.github.io
+    spa:
+        restart: always 
+        build: .
+        container_name: spa
+        image: registry.sphinx-repo.intracom-telecom.com/sphinx-project/real-time-cyber-risk-assessment/spa
+        image: spa
+        ports:
+            - 3001:3001
+        expose:
+            - 3001
+        # user: root
+        # priviledged: true
+        # networks:
+        #    - frontend
+        working_dir: /tamarin-prover
+        entrypoint: /bin/bash
+        command: -c "/home/tamarin/.local/bin/tamarin-prover interactive . -i=*4"
 
 
 Manual
