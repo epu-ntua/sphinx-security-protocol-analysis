@@ -1,8 +1,12 @@
 FROM archlinux:base-devel
 
-RUN pacman -Syu --noconfirm \
-    && pacman -S stack zip unzip graphviz --noconfirm && \
-    stack upgrade
+RUN pacman -Syu --noconfirm
+
+RUN pacman -S graphviz zip unzip --noconfirm 
+
+RUN pacman -S stack --noconfirm
+ 
+RUN stack upgrade
 
 # maude
 ENV MAUDE_URL http://maude.cs.illinois.edu/w/images/5/5d/Maude-2.7.1-linux.zip
@@ -28,6 +32,4 @@ RUN make default
 
 WORKDIR /home/tamarin/.local/bin
 
-ENTRYPOINT ["./tamarin-prover"]
 
-CMD ["--help"]
