@@ -7,7 +7,7 @@ services:
         build: .
         container_name: spa
         image: registry.sphinx-repo.intracom-telecom.com/sphinx-project/real-time-cyber-risk-assessment/spa
-        image: spa
+        #image: spa
         ports:
             - 3001:3001
         expose:
