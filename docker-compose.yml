@@ -17,4 +17,14 @@ services:
         working_dir: /tamarin-prover
         entrypoint: /bin/bash
         command: -c "/home/tamarin/.local/bin/tamarin-prover interactive . -i=*4"
-        
+        networks:
+            - backend
+            - frontend
+
+networks:
+    frontend:
+        name: frontend
+        driver: bridge
+    backend:
+        name: backend
+        driver: bridge
