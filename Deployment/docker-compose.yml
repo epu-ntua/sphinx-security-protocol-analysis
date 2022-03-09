@@ -4,7 +4,7 @@ services:
 
     spa:
         restart: always 
-        build: .
+        build: ..
         container_name: spa
         image: registry.sphinx-repo.intracom-telecom.com/sphinx-project/real-time-cyber-risk-assessment/spa
         #image: spa
